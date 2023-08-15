@@ -25,22 +25,22 @@ sudo nano apache-config.conf
 sudo nano Dockerfile
 
 #file content start
-        # Use a base image from the official Docker Hub repository
-        FROM ubuntu:latest
-
-        # Install necessary packages in the image
-        RUN apt-get update && apt-get install -y \
-        apache2 \
-        && rm -rf /var/lib/apt/lists/*
-
-        # Copy the Apache configuration file to the container
-        COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
-
-        # Enable the Apache module
-        RUN a2enmod rewrite
-
-        # Start the Apache web server when the container starts
-        CMD ["apache2ctl", "-D", "FOREGROUND"]
+          # Use a base image from the official Docker Hub repository
+          FROM ubuntu:latest
+  
+          # Install necessary packages in the image
+          RUN apt-get update && apt-get install -y \
+          apache2 \
+          && rm -rf /var/lib/apt/lists/*
+  
+          # Copy the Apache configuration file to the container
+          COPY apache-config.conf /etc/apache2/sites-available/000-default.conf
+  
+          # Enable the Apache module
+          RUN a2enmod rewrite
+  
+          # Start the Apache web server when the container starts
+          CMD ["apache2ctl", "-D", "FOREGROUND"]
 
 #file content end
 
